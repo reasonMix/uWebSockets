@@ -31,3 +31,7 @@ clean:
 .PHONY: tests
 tests:
 	$(CXX) $(CPP_OPENSSL_OSX) -std=c++11 -O3 tests/main.cpp -Isrc -o testsBin -lpthread -L. -luWS -lssl -lcrypto -lz -luv
+
+.PHONY: example
+example:
+	$(CXX) $(CPP_OPENSSL_OSX) -std=c++11 -O3 examples/echo.cpp -Isrc -o echoBin -lpthread -L. -luWS -lssl -lcrypto -lz -luv
