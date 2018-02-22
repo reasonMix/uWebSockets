@@ -1,5 +1,5 @@
 package = "uwebsocket"
-version = "0.1.3-1"
+version = "0.0.1-1"
 
 source = {
   url = "git://github.com:reasonMix/uWebSockets.git",
