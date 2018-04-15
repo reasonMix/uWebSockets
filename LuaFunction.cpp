@@ -187,7 +187,7 @@ void LuaFunction::pusharg(const char* v) const
     lua_pushstring(L, v);
 }
 
-void LuaFunction::pusharg(const Data& v) const
+void LuaFunction::pusharg(void* v) const
 {
-  lua_pushlstring(L, v.buf, v.len);
+  lua_pushlightuserdata(L, v);
 }

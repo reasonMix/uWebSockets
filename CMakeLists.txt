@@ -38,7 +38,11 @@ if (NOT LUA_INCLUDE_DIR OR NOT (BUILD_SHARED_LIBS OR LUA_LIBRARIES))
     find_package(Lua REQUIRED)
 endif()
 
+#add_definitions(-DUWS_THREADSAFE)
+
 include_directories(${LUA_INCLUDE_DIR})
+include_directories(/usr/local/include)
+include_directories(/usr/local/opt/openssl/include)
 
 list(APPEND SOURCES
   src/Epoll.cpp
@@ -50,6 +54,7 @@ list(APPEND SOURCES
   src/Node.cpp
   src/Socket.cpp
   src/WebSocket.cpp
+  src/lua_uwebsocket.cpp
   LuaFunction.cpp
 )
 

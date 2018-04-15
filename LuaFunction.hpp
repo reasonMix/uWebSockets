@@ -36,11 +36,6 @@ protected:
 
 typedef std::function<void(lua_State* aL)> CheckReturnFunction;
 
-typedef struct _Data {
-  const char* buf;
-  int len;
-}Data;
-
 struct LuaFunction : public LuaRef
 {
 public:
@@ -67,7 +62,7 @@ public:
     void pusharg(int v) const;
     void pusharg(const std::string& v) const;
     void pusharg(const char* v) const;
-    void pusharg(const Data& v) const;
+    void pusharg(void* v) const;
     template<typename T, typename... Args>
     inline void pusharg(T first, Args... args) const {
         pusharg(first);
