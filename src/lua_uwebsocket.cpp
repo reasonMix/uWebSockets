@@ -24,22 +24,46 @@ struct Command {
   }content;
 };
 
+struct SendMessage {
+  size_t size;
+  char* data;
+  uWS::OpCode opCode;
+  uWS::WebSocket<uWS::SERVER>* ws;
+};
+
 class WebSocketServer: public uWS::Hub {
 public:
   WebSocketServer(LuaFunction&& listener):listener_(std::move(listener))
   {}
 
   queue<Command*> cmds;
+  queue<struct SendMessage*> sendMessage;
   LuaFunction listener_;
 };
 
 static WebSocketServer* instance_ = nullptr;
 static std::mutex g_i_mutex;
-
+static std::mutex g_s_mutex;
+static bool done = false;
 
 void WebSocket_run() {
   printf("WebSocket_run running on ther 3000 port\r\n");
-  instance_->run();
+  //instance_->run();
+  while (!done) {
+    std::lock_guard<std::mutex> lock(g_s_mutex);
+
+    while (!instance_->sendMessage.empty())
+    {
+       struct SendMessage* message = instance_->sendMessage.front();
+       message->ws->send((char*)message->data, message->size, message->opCode);
+
+       delete(message->data);
+       delete(message);
+       instance_->sendMessage.pop();
+    }
+
+    instance_->poll();
+  }
 }
 
 static int uwebsocket_create(lua_State* L)
@@ -137,7 +161,20 @@ static int uwebsocket_write(lua_State* L)
 	size_t size = 0;
 	const char* data = luaL_checklstring(L, 3, &size);
 	uWS::OpCode opCode = (uWS::OpCode)lua_tointeger(L, 4);
-	ws->send((char*)data, size, opCode);
+
+  struct SendMessage* msg = new struct SendMessage();
+  msg->size = size;
+  msg->data = new char[size];//data;
+  memcpy(msg->data,(const void*)data,size);
+  msg->opCode = opCode;
+  msg->ws = ws;
+
+	//ws->send((char*)data, size, opCode);
+
+  {
+    std::lock_guard<std::mutex> lock(g_s_mutex);
+    instance_->sendMessage.push(msg);
+  }
 	return 0;
 }
 
@@ -194,7 +231,7 @@ extern "C" int luaopen_uwebsocket(lua_State *L)
 	lua_pop(L, 1);
 
 	// register the net api
-    lua_newtable(L);
+  lua_newtable(L);
 	luaL_register(L, NULL, api);
 
 	return 1;
