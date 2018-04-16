@@ -61,7 +61,6 @@ void WebSocket_run() {
        delete(message);
        instance_->sendMessage.pop();
     }
-
     instance_->poll();
   }
 }
@@ -162,6 +161,8 @@ static int uwebsocket_write(lua_State* L)
 	const char* data = luaL_checklstring(L, 3, &size);
 	uWS::OpCode opCode = (uWS::OpCode)lua_tointeger(L, 4);
 
+  //printf("call uwebsocket_write %s \n",data);
+
   struct SendMessage* msg = new struct SendMessage();
   msg->size = size;
   msg->data = new char[size];//data;
@@ -175,6 +176,7 @@ static int uwebsocket_write(lua_State* L)
     std::lock_guard<std::mutex> lock(g_s_mutex);
     instance_->sendMessage.push(msg);
   }
+  //printf("push to sendMessage\n");
 	return 0;
 }
 
