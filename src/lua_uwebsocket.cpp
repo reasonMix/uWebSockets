@@ -45,10 +45,11 @@ static WebSocketServer* instance_ = nullptr;
 static std::mutex g_i_mutex;
 static std::mutex g_s_mutex;
 static bool done = false;
+static int g_port = 3000;
 
 void WebSocket_run() {
-  printf("WebSocket_run running on ther 3000 port\r\n");
   //instance_->run();
+  printf("WebSocket_run running on ther %d port\r\n",g_port);
   while (!done) {
     std::lock_guard<std::mutex> lock(g_s_mutex);
 
@@ -70,6 +71,9 @@ static int uwebsocket_create(lua_State* L)
 	WebSocketServer** w = (WebSocketServer**)lua_newuserdata(L, sizeof(*w));
 	*w = new WebSocketServer(LuaFunction(L, 1));
   instance_ = *w;
+
+  int port = lua_tointeger(L, 2);
+  g_port = port;
 
   instance_->onMessage([](uWS::WebSocket<uWS::SERVER> *ws, char *message, size_t length, uWS::OpCode opCode) {
     //printf("message is %s length is %d \n", message,(int)length);
@@ -108,7 +112,7 @@ static int uwebsocket_create(lua_State* L)
 
 	luaL_getmetatable(L, uwebsocketMETA);
 	lua_setmetatable(L, -2);
-  instance_->listen(3000);
+  instance_->listen(port);
 
   std::thread* th1 = new std::thread(WebSocket_run);
   printf("create thread for run the websocket\r\n");
@@ -150,6 +154,14 @@ static int uwebsocket_gc(lua_State* L)
 	delete *w;
 	*w = nullptr; // mark as closed
 	return 0;
+}
+
+static int uwebsocket_getAddress(lua_State* L) {
+  auto socket = touwebsocket(L);
+  uWS::WebSocket<uWS::SERVER>* ws = (uWS::WebSocket<uWS::SERVER>*)lua_touserdata(L,2);
+  uWS::WebSocket<uWS::SERVER>::Address addr = ws->getAddress();
+  lua_pushstring(L,(const char*)addr.address);
+  return 1;
 }
 
 static int uwebsocket_write(lua_State* L)
@@ -212,6 +224,7 @@ static luaL_Reg methods[] = {
 	{ "__tostring", uwebsocket_tostring },
   { "delete", uwebsocket_gc},
 	{ "write", uwebsocket_write },
+  { "getAddress", uwebsocket_getAddress },
   { "poll", uwebsocket_poll },
 
 	{ NULL, NULL },
