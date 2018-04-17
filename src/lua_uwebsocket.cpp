@@ -91,36 +91,36 @@ static int uwebsocket_create(lua_State* L)
     cmd->content.message.opCode = opCode;
 
     cmd->content.message.payload = (char*)malloc(length+1);
-    memcpy(message,(const void*)cmd->content.message.payload,length);
+    memcpy(cmd->content.message.payload,message,length);
     cmd->content.message.payload[length] = 0;
     //cmd->content.message.payload.assign(message,length);
 
     instance_->cmds.push(cmd);
-    printf("onMessage  222\n");
+    //printf("onMessage  222\n");
   });
 
   instance_->onConnection([](uWS::WebSocket<uWS::SERVER> *ws, uWS::HttpRequest req) {
     //printf("onConnection is %x \n", ws);
     std::lock_guard<std::mutex> lock(g_i_mutex);
-    printf("onConnection  111\n");
+    //printf("onConnection  111\n");
 
     Command* cmd = (Command*)malloc(sizeof(Command));
     cmd->cmd = 0;
     cmd->content.ws = ws;
 
     instance_->cmds.push(cmd);
-    printf("onConnection  222\n");
+    //printf("onConnection  222\n");
   });
 
   instance_->onDisconnection([](uWS::WebSocket<uWS::SERVER>* ws, int code, char *message, size_t length){
     std::lock_guard<std::mutex> lock(g_i_mutex);
-    printf("onDisconnection  111\n");
+    //printf("onDisconnection  111\n");
     Command* cmd = (Command*)malloc(sizeof(Command));
     cmd->cmd = 1;
     cmd->content.ws = ws;
 
     instance_->cmds.push(cmd);
-    printf("onDisconnection  222\n");
+    //printf("onDisconnection  222\n");
   });
 
 	luaL_getmetatable(L, uwebsocketMETA);
