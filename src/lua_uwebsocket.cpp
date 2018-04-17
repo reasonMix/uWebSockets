@@ -173,7 +173,7 @@ static int uwebsocket_write(lua_State* L)
 	const char* data = luaL_checklstring(L, 3, &size);
 	uWS::OpCode opCode = (uWS::OpCode)lua_tointeger(L, 4);
 
-  //printf("call uwebsocket_write %s \n",data);
+  printf("pre call uwebsocket_write %s \n",data);
 
   struct SendMessage* msg = new struct SendMessage();
   msg->size = size;
@@ -182,12 +182,15 @@ static int uwebsocket_write(lua_State* L)
   msg->opCode = opCode;
   msg->ws = ws;
 
+
 	//ws->send((char*)data, size, opCode);
 
   {
     std::lock_guard<std::mutex> lock(g_s_mutex);
     instance_->sendMessage.push(msg);
   }
+
+  printf("post call uwebsocket_write \n");
   //printf("push to sendMessage\n");
 	return 0;
 }
