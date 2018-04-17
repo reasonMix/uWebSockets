@@ -17,7 +17,7 @@ struct Command {
 
     // onMessage
     struct {
-      std::string payload;
+      char* payload;
       uWS::OpCode opCode;
       uWS::WebSocket<uWS::SERVER>* ws;
     } message;
@@ -53,16 +53,19 @@ void WebSocket_run() {
   while (!done) {
     std::lock_guard<std::mutex> lock(g_s_mutex);
 
+    instance_->poll();
+
     while (!instance_->sendMessage.empty())
     {
        struct SendMessage* message = instance_->sendMessage.front();
+       //printf("pre call xxxxx send \r\n");
        message->ws->send((char*)message->data, message->size, message->opCode);
 
-       delete(message->data);
-       delete(message);
+       free(message->data);
+       free(message);
        instance_->sendMessage.pop();
+       //printf("post call xxxxx send \r\n");
     }
-    instance_->poll();
   }
 }
 
@@ -76,38 +79,48 @@ static int uwebsocket_create(lua_State* L)
   g_port = port;
 
   instance_->onMessage([](uWS::WebSocket<uWS::SERVER> *ws, char *message, size_t length, uWS::OpCode opCode) {
-    //printf("message is %s length is %d \n", message,(int)length);
+    //printf("111 message is %s length is %d \n", message,(int)length);
     // ws->send(message, length, opCode);
     std::lock_guard<std::mutex> lock(g_i_mutex);
+    //printf("onMessage  111\n");
 
     Command* cmd = (Command*)malloc(sizeof(Command));
     cmd->cmd = 2;
 
     cmd->content.message.ws = ws;
     cmd->content.message.opCode = opCode;
-    cmd->content.message.payload.assign(message,length);
+
+    cmd->content.message.payload = (char*)malloc(length+1);
+    memcpy(message,(const void*)cmd->content.message.payload,length);
+    cmd->content.message.payload[length] = 0;
+    //cmd->content.message.payload.assign(message,length);
 
     instance_->cmds.push(cmd);
+    printf("onMessage  222\n");
   });
 
   instance_->onConnection([](uWS::WebSocket<uWS::SERVER> *ws, uWS::HttpRequest req) {
     //printf("onConnection is %x \n", ws);
     std::lock_guard<std::mutex> lock(g_i_mutex);
+    printf("onConnection  111\n");
 
     Command* cmd = (Command*)malloc(sizeof(Command));
     cmd->cmd = 0;
     cmd->content.ws = ws;
 
     instance_->cmds.push(cmd);
+    printf("onConnection  222\n");
   });
 
   instance_->onDisconnection([](uWS::WebSocket<uWS::SERVER>* ws, int code, char *message, size_t length){
     std::lock_guard<std::mutex> lock(g_i_mutex);
+    printf("onDisconnection  111\n");
     Command* cmd = (Command*)malloc(sizeof(Command));
     cmd->cmd = 1;
     cmd->content.ws = ws;
 
     instance_->cmds.push(cmd);
+    printf("onDisconnection  222\n");
   });
 
 	luaL_getmetatable(L, uwebsocketMETA);
@@ -173,11 +186,11 @@ static int uwebsocket_write(lua_State* L)
 	const char* data = luaL_checklstring(L, 3, &size);
 	uWS::OpCode opCode = (uWS::OpCode)lua_tointeger(L, 4);
 
-  printf("pre call uwebsocket_write %s \n",data);
+  //printf("pre call uwebsocket_write %s \n",data);
 
-  struct SendMessage* msg = new struct SendMessage();
+  struct SendMessage* msg = (struct SendMessage*)malloc(sizeof(SendMessage));
   msg->size = size;
-  msg->data = new char[size];//data;
+  msg->data = (char*)malloc(size+1);//data;
   memcpy(msg->data,(const void*)data,size);
   msg->opCode = opCode;
   msg->ws = ws;
@@ -190,7 +203,7 @@ static int uwebsocket_write(lua_State* L)
     instance_->sendMessage.push(msg);
   }
 
-  printf("post call uwebsocket_write \n");
+  //printf("post call uwebsocket_write \n");
   //printf("push to sendMessage\n");
 	return 0;
 }
@@ -212,7 +225,10 @@ static int uwebsocket_poll(lua_State* L) {
      } else {
        void* ptr = (void*)command->content.message.ws;
        int i_opCode = (int)command->content.message.opCode;
-       listener("message",command->content.message.payload,i_opCode,ptr);
+       string payload = command->content.message.payload;
+       listener("message",payload,i_opCode,ptr);
+
+       free(command->content.message.payload);
      }
 
      free(command);

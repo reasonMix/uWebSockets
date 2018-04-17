@@ -1,0 +1,391 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C70BAF5F2085BDEE003263A7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70BAF5E2085BDEE003263A7 /* main.cpp */; };
+		C70BAF6A2085BFC7003263A7 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C70BAF692085BFC7003263A7 /* libcrypto.a */; };
+		C70BAF6C2085BFD9003263A7 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C70BAF6B2085BFD9003263A7 /* libssl.a */; };
+		C70BAF882085C05F003263A7 /* Extensions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70BAF702085C05F003263A7 /* Extensions.cpp */; };
+		C70BAF892085C05F003263A7 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70BAF732085C05F003263A7 /* Socket.cpp */; };
+		C70BAF8A2085C05F003263A7 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70BAF752085C05F003263A7 /* Node.cpp */; };
+		C70BAF8B2085C05F003263A7 /* Epoll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70BAF762085C05F003263A7 /* Epoll.cpp */; };
+		C70BAF8D2085C05F003263A7 /* HTTPSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70BAF7F2085C05F003263A7 /* HTTPSocket.cpp */; };
+		C70BAF8E2085C05F003263A7 /* WebSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70BAF802085C05F003263A7 /* WebSocket.cpp */; };
+		C70BAF8F2085C05F003263A7 /* Networking.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70BAF832085C05F003263A7 /* Networking.cpp */; };
+		C70BAF902085C060003263A7 /* Group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70BAF862085C05F003263A7 /* Group.cpp */; };
+		C70BAF912085C060003263A7 /* Hub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C70BAF872085C05F003263A7 /* Hub.cpp */; };
+		C70BAF932085C0B8003263A7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C70BAF922085C0B8003263A7 /* libz.tbd */; };
+		C70BAF952085C180003263A7 /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C70BAF942085C180003263A7 /* libuv.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C70BAF592085BDEE003263A7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C70BAF5B2085BDEE003263A7 /* uwebsocket-tool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "uwebsocket-tool"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C70BAF5E2085BDEE003263A7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		C70BAF692085BFC7003263A7 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = libs/libcrypto.a; sourceTree = "<group>"; };
+		C70BAF6B2085BFD9003263A7 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = libs/libssl.a; sourceTree = "<group>"; };
+		C70BAF6D2085BFF9003263A7 /* uwebsocket.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = uwebsocket.so; path = ../../build.luarocks/uwebsocket.so; sourceTree = "<group>"; };
+		C70BAF702085C05F003263A7 /* Extensions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Extensions.cpp; sourceTree = "<group>"; };
+		C70BAF712085C05F003263A7 /* WebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSocket.h; sourceTree = "<group>"; };
+		C70BAF722085C05F003263A7 /* Backend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Backend.h; sourceTree = "<group>"; };
+		C70BAF732085C05F003263A7 /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Socket.cpp; sourceTree = "<group>"; };
+		C70BAF742085C05F003263A7 /* Epoll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Epoll.h; sourceTree = "<group>"; };
+		C70BAF752085C05F003263A7 /* Node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
+		C70BAF762085C05F003263A7 /* Epoll.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Epoll.cpp; sourceTree = "<group>"; };
+		C70BAF782085C05F003263A7 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
+		C70BAF792085C05F003263A7 /* HTTPSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPSocket.h; sourceTree = "<group>"; };
+		C70BAF7A2085C05F003263A7 /* WebSocketProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSocketProtocol.h; sourceTree = "<group>"; };
+		C70BAF7B2085C05F003263A7 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
+		C70BAF7C2085C05F003263A7 /* Hub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hub.h; sourceTree = "<group>"; };
+		C70BAF7D2085C05F003263A7 /* Libuv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Libuv.h; sourceTree = "<group>"; };
+		C70BAF7E2085C05F003263A7 /* uWS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uWS.h; sourceTree = "<group>"; };
+		C70BAF7F2085C05F003263A7 /* HTTPSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HTTPSocket.cpp; sourceTree = "<group>"; };
+		C70BAF802085C05F003263A7 /* WebSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WebSocket.cpp; sourceTree = "<group>"; };
+		C70BAF812085C05F003263A7 /* Networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
+		C70BAF822085C05F003263A7 /* Asio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asio.h; sourceTree = "<group>"; };
+		C70BAF832085C05F003263A7 /* Networking.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Networking.cpp; sourceTree = "<group>"; };
+		C70BAF842085C05F003263A7 /* Socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Socket.h; sourceTree = "<group>"; };
+		C70BAF852085C05F003263A7 /* Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Extensions.h; sourceTree = "<group>"; };
+		C70BAF862085C05F003263A7 /* Group.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Group.cpp; sourceTree = "<group>"; };
+		C70BAF872085C05F003263A7 /* Hub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hub.cpp; sourceTree = "<group>"; };
+		C70BAF922085C0B8003263A7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		C70BAF942085C180003263A7 /* libuv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libuv.a; path = libs/libuv.a; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C70BAF582085BDEE003263A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C70BAF952085C180003263A7 /* libuv.a in Frameworks */,
+				C70BAF932085C0B8003263A7 /* libz.tbd in Frameworks */,
+				C70BAF6C2085BFD9003263A7 /* libssl.a in Frameworks */,
+				C70BAF6A2085BFC7003263A7 /* libcrypto.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C70BAF522085BDEE003263A7 = {
+			isa = PBXGroup;
+			children = (
+				C70BAF6F2085C05F003263A7 /* src */,
+				C70BAF5D2085BDEE003263A7 /* uwebsocket-tool */,
+				C70BAF5C2085BDEE003263A7 /* Products */,
+				C70BAF682085BFC7003263A7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C70BAF5C2085BDEE003263A7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C70BAF5B2085BDEE003263A7 /* uwebsocket-tool */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C70BAF5D2085BDEE003263A7 /* uwebsocket-tool */ = {
+			isa = PBXGroup;
+			children = (
+				C70BAF5E2085BDEE003263A7 /* main.cpp */,
+			);
+			path = "uwebsocket-tool";
+			sourceTree = "<group>";
+		};
+		C70BAF682085BFC7003263A7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C70BAF942085C180003263A7 /* libuv.a */,
+				C70BAF922085C0B8003263A7 /* libz.tbd */,
+				C70BAF6D2085BFF9003263A7 /* uwebsocket.so */,
+				C70BAF6B2085BFD9003263A7 /* libssl.a */,
+				C70BAF692085BFC7003263A7 /* libcrypto.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C70BAF6F2085C05F003263A7 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				C70BAF702085C05F003263A7 /* Extensions.cpp */,
+				C70BAF712085C05F003263A7 /* WebSocket.h */,
+				C70BAF722085C05F003263A7 /* Backend.h */,
+				C70BAF732085C05F003263A7 /* Socket.cpp */,
+				C70BAF742085C05F003263A7 /* Epoll.h */,
+				C70BAF752085C05F003263A7 /* Node.cpp */,
+				C70BAF762085C05F003263A7 /* Epoll.cpp */,
+				C70BAF782085C05F003263A7 /* Node.h */,
+				C70BAF792085C05F003263A7 /* HTTPSocket.h */,
+				C70BAF7A2085C05F003263A7 /* WebSocketProtocol.h */,
+				C70BAF7B2085C05F003263A7 /* Group.h */,
+				C70BAF7C2085C05F003263A7 /* Hub.h */,
+				C70BAF7D2085C05F003263A7 /* Libuv.h */,
+				C70BAF7E2085C05F003263A7 /* uWS.h */,
+				C70BAF7F2085C05F003263A7 /* HTTPSocket.cpp */,
+				C70BAF802085C05F003263A7 /* WebSocket.cpp */,
+				C70BAF812085C05F003263A7 /* Networking.h */,
+				C70BAF822085C05F003263A7 /* Asio.h */,
+				C70BAF832085C05F003263A7 /* Networking.cpp */,
+				C70BAF842085C05F003263A7 /* Socket.h */,
+				C70BAF852085C05F003263A7 /* Extensions.h */,
+				C70BAF862085C05F003263A7 /* Group.cpp */,
+				C70BAF872085C05F003263A7 /* Hub.cpp */,
+			);
+			name = src;
+			path = ../../src;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C70BAF5A2085BDEE003263A7 /* uwebsocket-tool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C70BAF622085BDEE003263A7 /* Build configuration list for PBXNativeTarget "uwebsocket-tool" */;
+			buildPhases = (
+				C70BAF572085BDEE003263A7 /* Sources */,
+				C70BAF582085BDEE003263A7 /* Frameworks */,
+				C70BAF592085BDEE003263A7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "uwebsocket-tool";
+			productName = "uwebsocket-tool";
+			productReference = C70BAF5B2085BDEE003263A7 /* uwebsocket-tool */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C70BAF532085BDEE003263A7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = liuyuntao;
+				TargetAttributes = {
+					C70BAF5A2085BDEE003263A7 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = C70BAF562085BDEE003263A7 /* Build configuration list for PBXProject "uwebsocket-tool" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C70BAF522085BDEE003263A7;
+			productRefGroup = C70BAF5C2085BDEE003263A7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C70BAF5A2085BDEE003263A7 /* uwebsocket-tool */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C70BAF572085BDEE003263A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C70BAF5F2085BDEE003263A7 /* main.cpp in Sources */,
+				C70BAF892085C05F003263A7 /* Socket.cpp in Sources */,
+				C70BAF902085C060003263A7 /* Group.cpp in Sources */,
+				C70BAF8D2085C05F003263A7 /* HTTPSocket.cpp in Sources */,
+				C70BAF882085C05F003263A7 /* Extensions.cpp in Sources */,
+				C70BAF8E2085C05F003263A7 /* WebSocket.cpp in Sources */,
+				C70BAF8F2085C05F003263A7 /* Networking.cpp in Sources */,
+				C70BAF8B2085C05F003263A7 /* Epoll.cpp in Sources */,
+				C70BAF8A2085C05F003263A7 /* Node.cpp in Sources */,
+				C70BAF912085C060003263A7 /* Hub.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C70BAF602085BDEE003263A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C70BAF612085BDEE003263A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C70BAF632085BDEE003263A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 38CL2X8J56;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../src",
+					/usr/local/include,
+					/usr/local/opt/openssl/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/libs",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C70BAF642085BDEE003263A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 38CL2X8J56;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../src",
+					/usr/local/include,
+					/usr/local/opt/openssl/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/libs",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C70BAF562085BDEE003263A7 /* Build configuration list for PBXProject "uwebsocket-tool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C70BAF602085BDEE003263A7 /* Debug */,
+				C70BAF612085BDEE003263A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C70BAF622085BDEE003263A7 /* Build configuration list for PBXNativeTarget "uwebsocket-tool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C70BAF632085BDEE003263A7 /* Debug */,
+				C70BAF642085BDEE003263A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C70BAF532085BDEE003263A7 /* Project object */;
+}

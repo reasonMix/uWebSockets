@@ -51,7 +51,7 @@ public:
 
         deflateInit2(&deflationStream, 1, Z_DEFLATED, -15, 8, Z_DEFAULT_STRATEGY);
 
-#ifdef UWS_THREADSAFE
+#if defined(UWS_THREADSAFE) && defined(USE_EPOLL)
         getLoop()->preCbData = nodeData;
         getLoop()->preCb = [](void *nodeData) {
             static_cast<uS::NodeData *>(nodeData)->asyncMutex->lock();
