@@ -62,7 +62,10 @@ list(APPEND SOURCES
 )
 
 if(BUILD_SHARED_LIBS)
-  #LINK_LIBRARIES("/usr/local/lib/libz.so")
+  if(APPLE)
+  else()
+  LINK_LIBRARIES("/usr/local/lib/libz.so")
+  endif()
   add_library(uwebsocket MODULE ${SOURCES})
   target_link_libraries(uwebsocket ${LUA_LIBRARIES} ${LIBUV_LIBRARIES} ${OPENSSL_LIBRARIES})
   set_target_properties(uwebsocket PROPERTIES OUTPUT_NAME "uwebsocket" PREFIX "")
