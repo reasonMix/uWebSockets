@@ -51,20 +51,21 @@ void WebSocket_run() {
   //instance_->run();
   printf("WebSocket_run running on ther %d port\r\n",g_port);
   while (!done) {
-    std::lock_guard<std::mutex> lock(g_s_mutex);
-
     instance_->poll();
 
-    while (!instance_->sendMessage.empty())
     {
-       struct SendMessage* message = instance_->sendMessage.front();
-       //printf("pre call xxxxx send \r\n");
-       message->ws->send((char*)message->data, message->size, message->opCode);
+      std::lock_guard<std::mutex> lock(g_s_mutex);
+      while (!instance_->sendMessage.empty())
+      {
+         struct SendMessage* message = instance_->sendMessage.front();
+         //printf("pre call xxxxx send \r\n");
+         message->ws->send((char*)message->data, message->size, message->opCode);
 
-       free(message->data);
-       free(message);
-       instance_->sendMessage.pop();
-       //printf("post call xxxxx send \r\n");
+         free(message->data);
+         free(message);
+         instance_->sendMessage.pop();
+         //printf("post call xxxxx send \r\n");
+      }
     }
   }
 }
