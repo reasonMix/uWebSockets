@@ -178,6 +178,14 @@ static int uwebsocket_getAddress(lua_State* L) {
   return 1;
 }
 
+static int uwebsocket_close(lua_State* L) {
+  auto socket = touwebsocket(L);
+  uWS::WebSocket<uWS::SERVER>* ws = (uWS::WebSocket<uWS::SERVER>*)lua_touserdata(L,2);
+  ws->close();
+  
+  return 0;
+}
+
 static int uwebsocket_write(lua_State* L)
 {
 	auto socket = touwebsocket(L);
@@ -246,6 +254,8 @@ static luaL_Reg methods[] = {
 	{ "write", uwebsocket_write },
   { "getAddress", uwebsocket_getAddress },
   { "poll", uwebsocket_poll },
+  { "close", uwebsocket_close },
+
 
 	{ NULL, NULL },
 };
