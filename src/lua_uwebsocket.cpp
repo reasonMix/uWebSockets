@@ -155,7 +155,6 @@ static int uwebsocket_tostring(lua_State* L)
 	return 1;
 }
 
-
 static int uwebsocket_gc(lua_State* L)
 {
 	auto w = touwebsocketp(L);
@@ -182,7 +181,7 @@ static int uwebsocket_close(lua_State* L) {
   auto socket = touwebsocket(L);
   uWS::WebSocket<uWS::SERVER>* ws = (uWS::WebSocket<uWS::SERVER>*)lua_touserdata(L,2);
   ws->close();
-  
+
   return 0;
 }
 
