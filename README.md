@@ -1,8 +1,11 @@
-<div align="center"><img src="misc/images/logo.png"/></div>
+<div align="center">
+<img src="misc/images/logo.png" />
+    
+*µWS ("[micro](https://en.wikipedia.org/wiki/Micro-)WS") is simple and efficient messaging for the modern web.*
 
-µWS ("[micro](https://en.wikipedia.org/wiki/Micro-)WS") is a WebSocket and HTTP implementation for clients and servers. Simple, efficient and lightweight.
+• [Wiki pages & user manual](https://github.com/uNetworking/uWebSockets/wiki/User-manual-v0.14.x) | [Care for a sneak peek?](https://github.com/uNetworking/v0.15)
 
-[Wiki pages & user manual](https://github.com/uNetworking/uWebSockets/wiki/User-manual-v0.14.x)
+</div>
 
 #### Build optimized WebSocket & HTTP servers & clients in no time.
 ```c++
@@ -28,11 +31,18 @@ int main() {
 }
 ```
 
+#### Pay what you want.
+A free & open source ([Zlib](LICENSE)) hobby project of [mine](https://github.com/alexhultman) since 2016. Kindly sponsored by [BitMEX](https://bitmex.com), [Bitfinex](https://bitfinex.com) & [Coinbase](https://www.coinbase.com/) in 2018.
+
+<div align="center"><img src="misc/images/2018.png"/></div>
+
+*Understand I don't take issue reports, suggestions or provide any support to free-riders. You want in? Become a sponsor.*
+
+#### Deploy with confidence.
+Feeling uncertain about your design? In need of professional help? I might have a few consulting hours for you and your business, send [me](https://github.com/alexhultman) a mail and we'll figure out the rest.
+
 #### Excel across the board.
 <div align="center"><img src="misc/images/overview.png"/></div>
 
-#### Fast does not imply broken.
+#### Be fast, not broken.
 Gracefully passes the [entire Autobahn fuzzing test suite](http://htmlpreview.github.io/?https://github.com/uNetworking/uWebSockets/blob/master/misc/autobahn/index.html) with no failures or Valgrind/ASAN errors. With or without SSL/permessage-deflate.
-
-#### Freely available.
-An open source ([Zlib](LICENSE)) hobby project of [mine](https://github.com/alexhultman) since 2016. Sponsored by [BitMEX.com](https://bitmex.com) since 2018.

@@ -24,8 +24,9 @@ int countOccurrences(std::string word, std::string &document) {
 void testAutobahn() {
     uWS::Hub h;
 
+    // let's test pmd + ssl and then pmd + sliding window
     uWS::Group<uWS::SERVER> *sslGroup = h.createGroup<uWS::SERVER>(uWS::PERMESSAGE_DEFLATE);
-    uWS::Group<uWS::SERVER> *group = h.createGroup<uWS::SERVER>(uWS::PERMESSAGE_DEFLATE);
+    uWS::Group<uWS::SERVER> *group = h.createGroup<uWS::SERVER>(uWS::PERMESSAGE_DEFLATE | uWS::SLIDING_DEFLATE_WINDOW);
 
     auto messageHandler = [](uWS::WebSocket<uWS::SERVER> *ws, char *message, size_t length, uWS::OpCode opCode) {
         ws->send(message, length, opCode, nullptr, nullptr, true);
@@ -1154,6 +1155,37 @@ void testThreadSafety() {
 
         std::cout << "Everything received" << std::endl;
     }
+}
+
+void testAsync() {
+    uWS::Hub h;
+    uS::Async *a = new uS::Async(h.getLoop());
+
+    a->start([](uS::Async *a) {
+        a->close();
+    });
+
+    std::thread t([&h]() {
+        h.run();
+    });
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(10));
+
+    a->send();
+    t.join();
+    std::cout << "Falling through Async test" << std::endl;
+}
+
+#include "Room.h"
+
+void testRoom() {
+    uWS::Hub h;
+
+    uWS::Room<uWS::SERVER> *room = new uWS::Room<uWS::SERVER>(h.getLoop());
+
+
+
+    delete room;
 }
 
 int main(int argc, char *argv[])
