@@ -67,6 +67,8 @@ void WebSocket_run() {
          //printf("post call xxxxx send \r\n");
       }
     }
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(30));
   }
 }
 
@@ -202,7 +204,6 @@ static int uwebsocket_write(lua_State* L)
   memcpy(msg->data,(const void*)data,size);
   msg->opCode = opCode;
   msg->ws = ws;
-
 
 	//ws->send((char*)data, size, opCode);
 
