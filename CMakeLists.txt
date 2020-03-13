@@ -10,6 +10,7 @@ endif()
 
 option(BUILD_SHARED_LIBS "Build shared library" OFF)
 
+
 if(UNIX)
   if(APPLE)
     set(PLAT "macosx")
@@ -17,7 +18,7 @@ if(UNIX)
   else(APPLE)
     set(PLAT "linux")
     if(BUILD_SHARED_LIBS)
-      set(LINK_FLAGS "-shared -L /usr/local/lib/ -lz")
+      set(LINK_FLAGS "-shared -L /usr/local/lib/ -lz -lssl -lcrypto")
     endif()
   endif(APPLE)
   add_definitions(-D_GNU_SOURCE)
